@@ -10,6 +10,12 @@ import { DashboardPage } from '@/pages/DashboardPage';
 import { SendPage } from '@/pages/SendPage';
 import { ProfilePage } from '@/pages/ProfilePage';
 import { FeedPage } from '@/pages/FeedPage';
+import { MarketplacePage } from '@/pages/MarketplacePage';
+import { CreateTaskPage } from '@/pages/CreateTaskPage';
+import { TaskDetailPage } from '@/pages/TaskDetailPage';
+import { CreateServicePage } from '@/pages/CreateServicePage';
+import { ServiceDetailPage } from '@/pages/ServiceDetailPage';
+import { SearchPage } from '@/pages/SearchPage';
 import { Loader2 } from 'lucide-react';
 
 export default function App() {
@@ -44,6 +50,12 @@ export default function App() {
           <Route path="/feed" element={<FeedPage />} />
           <Route path="/send" element={<SendPage />} />
           <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/marketplace" element={<MarketplacePage />} />
+          <Route path="/marketplace/tasks/new" element={<CreateTaskPage />} />
+          <Route path="/marketplace/tasks/:id" element={<TaskDetailPage />} />
+          <Route path="/marketplace/services/new" element={<CreateServicePage />} />
+          <Route path="/marketplace/services/:id" element={<ServiceDetailPage />} />
+          <Route path="/search" element={<SearchPage />} />
         </Route>
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

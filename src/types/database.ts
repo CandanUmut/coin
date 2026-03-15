@@ -105,3 +105,80 @@ export interface Notification {
   read: boolean;
   created_at: string;
 }
+
+// Phase 3: Marketplace types
+
+export type TaskStatus = 'open' | 'claimed' | 'submitted' | 'approved' | 'disputed' | 'cancelled';
+export type PriceType = 'fixed' | 'hourly';
+export type DisputeStatus = 'open' | 'resolved';
+export type DisputeVote = 'approve_worker' | 'return_poster' | 'split';
+
+export interface Task {
+  id: string;
+  poster_id: string;
+  worker_id: string | null;
+  title: string;
+  description: string;
+  bounty_amount: number;
+  status: TaskStatus;
+  category: string;
+  escrow_tx_id: string | null;
+  created_at: string;
+  updated_at: string;
+  poster?: Pick<Profile, 'id' | 'display_name' | 'avatar_url' | 'reputation_score'>;
+  worker?: Pick<Profile, 'id' | 'display_name' | 'avatar_url'> | null;
+}
+
+export interface Service {
+  id: string;
+  provider_id: string;
+  title: string;
+  description: string;
+  category: string;
+  price_tc: number;
+  price_type: PriceType;
+  rating_avg: number;
+  review_count: number;
+  is_active: boolean;
+  created_at: string;
+  provider?: Pick<Profile, 'id' | 'display_name' | 'avatar_url' | 'reputation_score'>;
+}
+
+export interface ServiceReview {
+  id: string;
+  service_id: string;
+  reviewer_id: string;
+  rating: number;
+  review_text: string;
+  created_at: string;
+  reviewer?: Pick<Profile, 'display_name' | 'avatar_url'>;
+}
+
+export interface Dispute {
+  id: string;
+  task_id: string;
+  initiated_by: string;
+  reason: string;
+  status: DisputeStatus;
+  resolution: string | null;
+  jury_members: string[];
+  jury_votes: Record<string, DisputeVote>;
+  created_at: string;
+  task?: Task;
+}
+
+export interface SearchResult {
+  id: string;
+  type: 'post' | 'task' | 'service';
+  title: string;
+  description?: string;
+  created_at: string;
+  author_name: string;
+  bounty_amount?: number;
+  status?: string;
+  category?: string;
+  rating_avg?: number;
+  review_count?: number;
+  engagement_count?: number;
+  rank?: number;
+}
