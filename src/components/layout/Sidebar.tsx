@@ -1,5 +1,5 @@
 import { NavLink, useNavigate } from 'react-router-dom';
-import { LayoutDashboard, Send, User, LogOut, Coins, Menu, X } from 'lucide-react';
+import { LayoutDashboard, Send, User, LogOut, Coins, Menu, X, Newspaper } from 'lucide-react';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
@@ -8,6 +8,7 @@ import { cn } from '@/lib/utils';
 
 const navItems = [
   { to: '/', icon: LayoutDashboard, label: 'Dashboard' },
+  { to: '/feed', icon: Newspaper, label: 'Feed' },
   { to: '/send', icon: Send, label: 'Send TC' },
   { to: '/profile', icon: User, label: 'Profile' },
 ];

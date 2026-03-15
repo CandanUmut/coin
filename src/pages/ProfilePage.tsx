@@ -1,5 +1,5 @@
 import { useState, useEffect, type FormEvent } from 'react';
-import { User, Loader2, Shield } from 'lucide-react';
+import { User, Loader2, Shield, Star } from 'lucide-react';
 import { toast } from 'sonner';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -75,7 +75,10 @@ export function ProfilePage() {
               <Shield className="h-3 w-3" />
               <span className="capitalize">{profile?.role}</span>
             </div>
-            <div className="mt-2 text-sm text-muted-foreground">
+            <div className="mt-2 flex items-center gap-1 text-sm text-muted-foreground">
+              {(profile?.reputation_score ?? 0) >= 10 && (
+                <Star className="h-3.5 w-3.5 fill-yellow-400 text-yellow-400" />
+              )}
               Reputation: {profile?.reputation_score ?? 0}
             </div>
             {profile?.bio && (

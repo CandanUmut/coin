@@ -9,6 +9,7 @@ import { RegisterPage } from '@/pages/RegisterPage';
 import { DashboardPage } from '@/pages/DashboardPage';
 import { SendPage } from '@/pages/SendPage';
 import { ProfilePage } from '@/pages/ProfilePage';
+import { FeedPage } from '@/pages/FeedPage';
 import { Loader2 } from 'lucide-react';
 
 export default function App() {
@@ -40,6 +41,7 @@ export default function App() {
           }
         >
           <Route path="/" element={<DashboardPage />} />
+          <Route path="/feed" element={<FeedPage />} />
           <Route path="/send" element={<SendPage />} />
           <Route path="/profile" element={<ProfilePage />} />
         </Route>
